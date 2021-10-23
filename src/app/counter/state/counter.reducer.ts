@@ -1,10 +1,11 @@
-import { createReducer, on, props } from '@ngrx/store';
 import {
+  changetext,
   customIncrement,
   decrement,
   increment,
   reset,
 } from './counter.actions';
+import { createReducer, on, props } from '@ngrx/store';
 
 import { initialState } from './counter.state';
 
@@ -21,6 +22,9 @@ const _counterReducer = createReducer(
   }),
   on(customIncrement, (state, action) => {
     return { ...state, counter: state.counter + action.value };
+  }),
+  on(changetext, (state) => {
+    return { ...state, text: 'NgRx is really awesome' };
   })
 );
 
